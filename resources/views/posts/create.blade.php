@@ -11,7 +11,7 @@
         @include('layout.nav')
             <h1>Upload an image</h1>
         <hr> 
-        <form method="POST" action="/posts">
+        <form method="POST" action="/posts" enctype="multipart/form-data">
 
             {{ csrf_field() }}
 
@@ -34,7 +34,7 @@
                     <button type="submit" class="btn btn-primary">Post</button>
                 </div>
                   
-                {{-- @include ('layout.errors') --}}
+                @include ('layout.errors')
 
             </form>
     </body>

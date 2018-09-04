@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Post;
 use Carbon\Carbon;
 
@@ -34,13 +35,32 @@ class PostsController extends Controller
        
         $this->validate(request(), [
             'title' => 'required',
+            'fileToUpload' => 'required',
         ]);
+
+        $img = $request->file('fileToUpload');
+        
+        //File Type
+        //$ext = $img->getClientMimeType();
+        //dd($ext);
+        //$file = $request->file('myfile');
+        $ext = $img->getClientOriginalExtension();
+        $imageName = time().'.'.$ext;        
+        $img->move(public_path('/uploadedimages'), $imageName);
+
+       // dd($ext);
+        
+       
+        // $file = request()->file('fileToUpload');
+        // $file->store(public_path(), ['disk' => 'public']);
 
         $post = Post::create([
             'title' => request('title'),
+            'image_name' => $imageName
             //'user_id' => auth()->id()
         ]);
-
+            
+        
         // session()->flash(
         //     'message', 'Post saved successfully.'
         // );

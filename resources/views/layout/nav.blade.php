@@ -17,6 +17,9 @@
             </li>
             @else
             <li class="nav-item">
+              <a class="nav-link" href="/posts/create">Upload</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/logout">Logout</a>
             </li>
             @endif

@@ -1,41 +1,32 @@
-<!DOCTYPE html>
-<html>
-    <head>
+@extends('layout.master')
+@section('content')
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <div class="col-sm-8">
+    <h1>Upload an image</h1>
+        
+    <form method="POST" action="/posts" enctype="multipart/form-data">
 
-    </head>
+        {{ csrf_field() }}
 
-    <body>
+            <div class="form-group">
+                <label for="title">Image title:</label>
+                <input type="text" class="form-control" id="title" name="title" >
+
+            </div>
+
+            <div class="form-group">
+
+                    <label for="image">Select image to upload:</label>
+                    <input type="file" name="fileToUpload" id="fileToUpload"> 
+                    {{-- <input type="submit" value="Upload Image" name="submit"> --}}
+            </div>
             
-        @include('layout.nav')
-            <h1>Upload an image</h1>
-        <hr> 
-        <form method="POST" action="/posts" enctype="multipart/form-data">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+                
+            @include ('layout.errors')
 
-            {{ csrf_field() }}
-
-                <div class="form-group">
-
-                  <label for="title">Image title:</label>
-
-                  <input type="text" class="form-control" id="title" name="title" >
-               
-                </div>
-
-                <div class="form-group">
-
-                        <label for="image">Select image to upload:</label>
-                        <input type="file" name="fileToUpload" id="fileToUpload"> 
-                        {{-- <input type="submit" value="Upload Image" name="submit"> --}}
-                </div>
-               
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Post</button>
-                </div>
-                  
-                @include ('layout.errors')
-
-            </form>
-    </body>
-</html>
+        </form>
+    </div>
+@endsection

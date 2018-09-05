@@ -26,4 +26,9 @@ Route::get('/posts/{post}', 'PostsController@show');
 
 //Registration Controller
 Route::post('/register', 'RegistrationController@store');
-Route::get('/register', 'RegistrationController@create');
+Route::get('/register', 'RegistrationController@index');
+
+//Sessions controller
+Route::get('/login', 'SessionsController@create');
+Route::get('/logout', 'SessionsController@destroy');
+Route::post('/login', 'SessionsController@store');

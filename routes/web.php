@@ -23,3 +23,7 @@ Route::get('/', function () {
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');
+
+//Registration Controller
+Route::post('/register', 'RegistrationController@store');
+Route::get('/register', 'RegistrationController@create');

@@ -1,42 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    </head>
-
-    <body>
-            
-        @include('layout.nav')
-
-        <form>
-            <h1>Publish a Post</h1>
+@extends('layout.master')
+@section('content')
+      <form>
+            <h1>Home Page</h1>
 
         <hr> 
-        <form method="POST" action="/posts">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Fusce lectus nisl, porta at condimentum id, volutpat id ligula.
+        Duis ut consectetur augue. Praesent quis sapien nec purus feugiat auctor.
+        Vivamus tempor sagittis augue, vitae commodo odio egestas pretium. 
+        Quisque molestie enim ut nulla consequat efficitur. Nam vitae quam mi. 
+        Proin vehicula, elit et mollis ultricies, sapien turpis pharetra mauris, eu dictum odio arcu in metus.
+        Morbi vitae diam ullamcorper enim venenatis ornare. Nulla facilisi. Donec quis maximus nisi.
+        Morbi dictum nulla arcu, sit amet convallis tortor dictum in.
+        Nullam luctus lacinia tellus, ac laoreet risus cursus sed.
+        Sed dapibus sit amet ante efficitur rhoncus. Cras non vulputate sapien. 
+        Proin nisl risus, pellentesque sed massa sit amet, vulputate fermentum lacus. 
+        In in libero nunc.
 
-            {{ csrf_field() }}
+      </p>
 
-                <div class="form-group">
-
-                  <label for="title">Image title:</label>
-
-                  <input type="text" class="form-control" id="title" name="title" >
-               
-                </div>
-               
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Post</button>
-                </div>
-                  
-                {{-- @include ('layout.errors') --}}
-
-            </form>
-
-
-        </form>
-
-
-    </body>
-</html>
+@endsection

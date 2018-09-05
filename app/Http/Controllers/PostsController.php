@@ -39,17 +39,10 @@ class PostsController extends Controller
         ]);
 
         $img = $request->file('fileToUpload');
-        
-        //File Type
-        //$ext = $img->getClientMimeType();
-        //dd($ext);
-        //$file = $request->file('myfile');
+
         $ext = $img->getClientOriginalExtension();
         $imageName = time().'.'.$ext;        
         $img->move(public_path('/uploadedimages'), $imageName);
-
-       // dd($ext);
-        
        
         // $file = request()->file('fileToUpload');
         // $file->store(public_path(), ['disk' => 'public']);
@@ -60,11 +53,6 @@ class PostsController extends Controller
             //'user_id' => auth()->id()
         ]);
             
-        
-        // session()->flash(
-        //     'message', 'Post saved successfully.'
-        // );
-
         return view("posts.show", compact('post')); 
     }
 }

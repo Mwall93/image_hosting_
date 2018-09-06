@@ -15,12 +15,13 @@ Route::get('/', function () {
 
     return view('/posts/index');
 
-})->name('home');
+});
 
 //Posts Controller
 //Route::get('/posts', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
+Route::get('/posts', 'PostsController@index')->name('home');
 Route::get('/posts/{post}', 'PostsController@show');
 
 //Registration Controller

@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        //Only guests allowed to access login page
+        $this->middleware('guest', ['except' => 'destroy']);
+    }
+
     public function create()
     {
         return view('sessions.create');

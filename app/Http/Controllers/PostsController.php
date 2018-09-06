@@ -12,7 +12,19 @@ class PostsController extends Controller
     
     public function index(){
 
-        return view('posts.index');
+        //$posts = Post::latest()->get();
+            // ->filer(request(['month', 'year']))
+
+        if(\Auth::check())
+        {
+            $posts = auth()->user()->post()->get();
+        }
+        else
+        {
+            $posts = Post::latest()->get();
+        }
+        return view('posts.index', compact('posts'));
+
     }
 
     public function create(){
@@ -49,8 +61,8 @@ class PostsController extends Controller
 
         $post = Post::create([
             'title' => request('title'),
-            'image_name' => $imageName
-            //'user_id' => auth()->id()
+            'image_name' => $imageName,
+            'user_id' => auth()->id()
         ]);
             
         return view("posts.show", compact('post')); 

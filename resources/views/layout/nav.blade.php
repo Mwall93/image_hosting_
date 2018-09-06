@@ -8,19 +8,19 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            @if (!Auth::check())
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-            @else
             <li class="nav-item">
               <a class="nav-link" href="/posts/create">Upload</a>
             </li>
+            @if (!Auth::check())
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link ml-auto" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-auto" href="/register">Register</a>
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link ml-auto" href="/logout">Logout</a>
             </li>
             @endif
           </ul>

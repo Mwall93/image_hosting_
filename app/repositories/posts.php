@@ -7,5 +7,11 @@ class Posts
     {
         return Post::all();
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
 ?>

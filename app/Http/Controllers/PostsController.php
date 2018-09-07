@@ -13,16 +13,8 @@ class PostsController extends Controller
     public function index(){
 
         //$posts = Post::latest()->get();
-            // ->filer(request(['month', 'year']))
-
-        if(\Auth::check())
-        {
-            $posts = auth()->user()->post()->get();
-        }
-        else
-        {
-            $posts = Post::latest()->get();
-        }
+            // ->filter(request(['month', 'year']))
+        $posts = Post::latest()->get();
         return view('posts.index', compact('posts'));
 
     }
@@ -67,4 +59,17 @@ class PostsController extends Controller
             
         return view("posts.show", compact('post')); 
     }
+
+    // public function myPosts(){
+
+    //     $posts = Post::latest()->get();
+    //     // ->filter(request(['month', 'year']))
+    //     if(\Auth::check())
+    //     {
+    //         $posts = auth()->user()->post()->get();
+    //     }
+    //     return view('posts.index', compact('posts'));
+    // }
+
+
 }

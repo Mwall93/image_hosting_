@@ -1,11 +1,19 @@
-
 @extends('layout.master')
 @section('content')
       <form>
-            <h1>Home Page</h1>
-
+            {{-- <h1>Home Page</h1> --}}
         <hr> 
-      <p>
+        <? $posts = request($posts) ?>
+
+        <div class="col-sm-8 blog-main">
+            @foreach ($posts as $post)
+              @include('posts.post')
+            @endforeach
+        </div>
+
+      </form>
+
+      {{-- <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Fusce lectus nisl, porta at condimentum id, volutpat id ligula.
         Duis ut consectetur augue. Praesent quis sapien nec purus feugiat auctor.
@@ -19,6 +27,5 @@
         Proin nisl risus, pellentesque sed massa sit amet, vulputate fermentum lacus. 
         In in libero nunc.
 
-      </p>
-
+      </p> --}}
 @endsection

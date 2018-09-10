@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostDataTable extends Migration
+class AddViewsToPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreatePostDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_data', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('post_id');
+        Schema::table('posts', function($table) {
             $table->integer('views');
-            $table->timestamps();
         });
     }
 
@@ -28,6 +25,8 @@ class CreatePostDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_data');
+        Schema::table('posts', function($table) {
+            $table->dropColumn('views');
+        });
     }
 }

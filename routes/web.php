@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
 
-    return view('/posts/index');
+    return redirect()->home();
 
 });
 
@@ -28,6 +28,7 @@ Route::get('/posts/my_posts', function(){
     if(\Auth::check())
     {
         $posts = auth()->user()->post()->get();
+        // dd($posts);
         return view('posts.index', compact('posts'));
     }
     else

@@ -4,4 +4,7 @@
             {{ $post->title }}
         </a>
     </h2>
-</div><!-- /.blog-post -->
+    <figcaption>
+        {{ $post->views }} views
+    </figcaption>
+</div>

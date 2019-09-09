@@ -20,6 +20,9 @@
             </li>
             @else
             <li class="nav-item">
+              <a class="nav-link ml-auto" href="/posts/my_posts">My Posts</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link ml-auto" href="/logout">Logout</a>
             </li>
             @endif

@@ -14,7 +14,7 @@ class AddViewsToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function($table) {
-            $table->integer('views');
+            $table->integer('views')->default('0');
         });
     }
 

@@ -27,16 +27,15 @@ class PostsController extends Controller
 
     public function show(Post $post){
 
+            $post->increment('views');
+
             return view('posts.show', compact('post'));
 
     }
 
     public function store(Request $request)
     {
-         // dd(request()->all());
-
-       // Validate input
-       
+        //dd(request()->all());
         $this->validate(request(), [
             'title' => 'required',
             'fileToUpload' => 'required',
@@ -48,28 +47,25 @@ class PostsController extends Controller
         $imageName = time().'.'.$ext;        
         $img->move(public_path('/uploadedimages'), $imageName);
        
-        // $file = request()->file('fileToUpload');
-        // $file->store(public_path(), ['disk' => 'public']);
+        //dd(auth()->id());
 
         $post = Post::create([
             'title' => request('title'),
             'image_name' => $imageName,
             'user_id' => auth()->id()
         ]);
-            
+         
         return view("posts.show", compact('post')); 
     }
 
-    // public function myPosts(){
+    public function myPosts(){
 
-    //     $posts = Post::latest()->get();
-    //     // ->filter(request(['month', 'year']))
-    //     if(\Auth::check())
-    //     {
-    //         $posts = auth()->user()->post()->get();
-    //     }
-    //     return view('posts.index', compact('posts'));
-    // }
-
-
+        $posts = Post::latest()->get();
+        // ->filter(request(['month', 'year']))
+        if(\Auth::check())
+        {
+            $posts = auth()->user()->post()->get();
+        }
+        return view('posts.index', compact('posts'));
+    }
 }
